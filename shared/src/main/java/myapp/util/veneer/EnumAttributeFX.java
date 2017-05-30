@@ -1,8 +1,5 @@
 package myapp.util.veneer;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-
 import javafx.beans.property.ObjectProperty;
 
 import org.opendolphin.core.PresentationModel;
@@ -34,19 +31,29 @@ public class EnumAttributeFX<T extends Enum<T>> extends AttributeFX<ObjectProper
         return Enum.valueOf(clazz, string);
     }
 
-
-    public void setValue(T value){
+    public void setValue(T value) {
         valueProperty().setValue(value);
     }
 
-    public T getValue(){
+    public T getValue() {
         return valueProperty().getValue();
     }
 
+    static <E extends Enum<E>> String createRegex(Class<E> enumClass) {
+        StringBuffer regex         = new StringBuffer();
+        E[]          enumConstants = enumClass.getEnumConstants();
+        for (int i = 0; i < enumConstants.length; i++) {
+            regex.append("((?i)")
+                 .append(enumConstants[i].name())
+                 .append("){1}");
+            if (i < enumConstants.length - 1) {
+                regex.append("|");
+            }
+        }
 
-    static <E extends Enum<E>> String createRegex(Class<E> enumClass){
-        return Arrays.stream(enumClass.getEnumConstants())
-              .map(e -> "((?i)" + e.name() + "){1}")
-              .collect(Collectors.joining("|"));
+        return regex.toString();
+//        return Arrays.stream(enumClass.getEnumConstants())
+//              .map(e -> "((?i)" + e.name() + "){1}")
+//              .collect(Collectors.joining("|"));
     }
 }

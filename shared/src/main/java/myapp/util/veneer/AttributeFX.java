@@ -1,5 +1,7 @@
 package myapp.util.veneer;
 
+import java.time.Duration;
+
 import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -17,6 +19,7 @@ import org.opendolphin.core.Tag;
 import myapp.util.AdditionalTag;
 import myapp.util.AttributeDescription;
 import myapp.util.Language;
+import myapp.util.TaskBatcher;
 import myapp.util.veneer.dolphinattributeadapter.BooleanAttributeAdapter;
 import myapp.util.veneer.dolphinattributeadapter.DirtyPropertyAdapter;
 import myapp.util.veneer.dolphinattributeadapter.StringAttributeAdapter;
@@ -43,6 +46,8 @@ public abstract class AttributeFX<PropertyType extends Property<ValueType>, Valu
 
     private final Pattern syntaxPattern;
 
+    private final TaskBatcher taskBatcher = new TaskBatcher(Duration.ofMillis(150));
+
     protected AttributeFX(PresentationModel pm, AttributeDescription attributeDescription, String syntaxPattern, PropertyType dolphinValueAttributeAdapter) {
         this.syntaxPattern  = Pattern.compile(syntaxPattern);
 
@@ -58,19 +63,23 @@ public abstract class AttributeFX<PropertyType extends Property<ValueType>, Valu
         setUserFacingString(format(valueProperty().getValue()));
 
         userFacingStringProperty().addListener((observable, oldValue, newValue) -> {
-            if(Platform.isFxApplicationThread()){
-                Platform.runLater(() -> reactToUserInput(newValue));
-            }
-            else {
-                reactToUserInput(newValue);
-            }
+            taskBatcher.batch(() -> {
+//                if(Platform.isFxApplicationThread()){
+//                    Platform.runLater(() -> reactToUserInput(newValue));
+//                }
+//                else {
+                    reactToUserInput(newValue);
+//                }
+            });
         });
 
         valueProperty().addListener((observable, oldValue, newValue) -> {
             String formattedValue = format(newValue);
             if(!Objects.equals(formattedValue, getUserFacingString())){
                 if(Platform.isFxApplicationThread()){
-                    Platform.runLater(() -> setUserFacingString(formattedValue));
+                    Platform.runLater(() -> {
+                        setUserFacingString(formattedValue);
+                    });
                 }
                 else {
                     setUserFacingString(formattedValue);

@@ -24,7 +24,8 @@ public class MyAppView extends Application implements BasePmMixin {
         clientDolphin.send(BasicCommands.INITIALIZE_BASE_PMS,
              $ -> buildUI(stage));
         clientDolphin.send(BasicCommands.INITIALIZE_CONTROLLER,
-             $ -> clientDolphin.send(PersonCommands.LOAD_SOME_PERSON));
+             $ -> clientDolphin.send(PersonCommands.SHOW_NEXT));
+        clientDolphin.startPushListening(PersonCommands.ON_PUSH, PersonCommands.ON_RELEASE);
     }
 
     private void buildUI(Stage stage) {

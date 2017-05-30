@@ -55,11 +55,7 @@ public class ObjectAttributeAdapter<T> extends SimpleObjectProperty<T> {
     public void set(T value) {
         Attribute attribute = attributeRef.get();
         if (attribute != null && !Objects.equals(attribute.getValue(), value)) {
-//            if (Platform.isFxApplicationThread()) {
-//                Platform.runLater(() -> attribute.setValue(converter.toAttributeValue(value)));
-//            } else {
-                attribute.setValue(converter.toAttributeValue(value));
-//            }
+            attribute.setValue(converter.toAttributeValue(value));
         }
     }
 

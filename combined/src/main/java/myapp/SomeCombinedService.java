@@ -18,17 +18,15 @@ public class SomeCombinedService implements SomeService, DTOMixin {
                       "Tom Stafford"  , "John Young"  , "Eugene Cernan"};     // Apollo 10
 
     @Override
-    public DTO loadSomeEntity() {
-        long id = createNewId();
-
-        Random r        = new Random();
-        String name     = names[r.nextInt(names.length)];
-        int    age      = r.nextInt(43);
+    public DTO loadEntity(long entityId) {
+        int index = Math.max(0, Math.min((int) entityId, names.length - 1));
+        String name     = names[index];
+        int    age      = index + 22;
         boolean isAdult = age >= 18;
-        return new DTO(createSlot(PersonAtt.ID      , id     , id),
-                       createSlot(PersonAtt.NAME    , name   , id),
-                       createSlot(PersonAtt.AGE     , age    , id),
-                       createSlot(PersonAtt.IS_ADULT, isAdult, id));
+        return new DTO(createSlot(PersonAtt.ID      , entityId, entityId),
+                       createSlot(PersonAtt.NAME    , name    , entityId),
+                       createSlot(PersonAtt.AGE     , age     , entityId),
+                       createSlot(PersonAtt.IS_ADULT, isAdult , entityId));
     }
 
     @Override

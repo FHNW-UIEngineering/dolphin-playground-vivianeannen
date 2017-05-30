@@ -10,7 +10,7 @@ import org.opendolphin.core.server.DTO;
  * todo: replace this with your application specific service and add similar services as needed
  */
 public interface SomeService {
-    DTO loadSomeEntity();
+    DTO loadEntity(long entityId);
 
     void save(List<DTO> dtos);
 

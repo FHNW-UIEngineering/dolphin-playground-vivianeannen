@@ -65,6 +65,7 @@ class RootPane extends GridPane implements ViewMixin, BasePmMixin {
 
     private Button saveButton;
     private Button resetButton;
+    private Button lastButton;
     private Button nextButton;
     private Button germanButton;
     private Button englishButton;
@@ -112,6 +113,7 @@ class RootPane extends GridPane implements ViewMixin, BasePmMixin {
 
         saveButton    = new Button("Save");
         resetButton   = new Button("Reset");
+        lastButton    = new Button("Last");
         nextButton    = new Button("Next");
         germanButton  = new Button("German");
         englishButton = new Button("English");
@@ -134,7 +136,7 @@ class RootPane extends GridPane implements ViewMixin, BasePmMixin {
         add(ageField       , 1, 3, 4, 1);
         add(isAdultLabel   , 0, 4);
         add(isAdultCheckBox, 1, 4, 4, 1);
-        add(new HBox(5, saveButton, resetButton, nextButton, germanButton, englishButton), 0, 5, 5, 1);
+        add(new HBox(5, saveButton, resetButton, lastButton, nextButton, germanButton, englishButton), 0, 5, 5, 1);
     }
 
     @Override
@@ -145,7 +147,8 @@ class RootPane extends GridPane implements ViewMixin, BasePmMixin {
         ApplicationState ps = getApplicationState();
         saveButton.setOnAction(   $ -> clientDolphin.send(PersonCommands.SAVE));
         resetButton.setOnAction(  $ -> clientDolphin.send(PersonCommands.RESET));
-        nextButton.setOnAction(   $ -> clientDolphin.send(PersonCommands.LOAD_SOME_PERSON));
+        lastButton.setOnAction(   $ -> clientDolphin.send(PersonCommands.SHOW_LAST));
+        nextButton.setOnAction(   $ -> clientDolphin.send(PersonCommands.SHOW_NEXT));
 
         germanButton.setOnAction( $ -> ps.language.setValue(Language.GERMAN));
         englishButton.setOnAction($ -> ps.language.setValue(Language.ENGLISH));

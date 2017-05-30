@@ -1,6 +1,6 @@
 package myapp.util;
 
-import java.util.stream.Stream;
+//import java.util.stream.Stream;
 
 import org.opendolphin.core.Attribute;
 import org.opendolphin.core.Dolphin;
@@ -17,9 +17,6 @@ import myapp.presentationmodel.PMDescription;
 public interface DolphinMixin {
     Dolphin getDolphin();
 
-    default Stream<PresentationModel> findAllPresentationModelsByType(PMDescription type){
-        return getDolphin().findAllPresentationModelsByType(type.getName()).stream();
-    }
 
     default PresentationModel get(PMDescription type, long id){
         return getDolphin().getAt(type.pmId(id));

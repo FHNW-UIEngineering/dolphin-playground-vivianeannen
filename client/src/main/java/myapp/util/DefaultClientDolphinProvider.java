@@ -27,7 +27,6 @@ public class DefaultClientDolphinProvider {
         connector.setUiThreadHandler(new JavaFXUiThreadHandler());
         connector.setStrictMode(false);
 
-
         clientDolphin.setClientConnector(connector);
 
         return clientDolphin;

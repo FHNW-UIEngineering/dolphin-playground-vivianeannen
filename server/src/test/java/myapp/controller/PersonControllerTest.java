@@ -33,7 +33,7 @@ public class PersonControllerTest {
     @Before
     public void setup() {
         service = new ServiceStub();
-        controller = new PersonController(service);
+        controller = new PersonController(Bus.PERSON, service);
 
         serverModelStore = new TestModelStore();
         controller.setServerDolphin(new DefaultServerDolphin(serverModelStore, new ServerConnector()));
@@ -75,7 +75,7 @@ public class PersonControllerTest {
         p.name.setValue("bla");
 
         //when
-        ServerPresentationModel pm = controller.loadPerson();
+        ServerPresentationModel pm = controller.showNext();
 
         //then
         assertFalse(p.isDirty());
@@ -93,7 +93,7 @@ public class PersonControllerTest {
         //given
         controller.initializeBasePMs();
         Person p = controller.getPersonProxy();
-        controller.loadPerson();
+        controller.showNext();
 
         p.name.setValue("abc");
 
@@ -109,7 +109,7 @@ public class PersonControllerTest {
         int saveCounter;
 
         @Override
-        public DTO loadSomeEntity() {
+        public DTO loadEntity(long entityId) {
             return createDTO(PMDescription.PERSON);
         }
 

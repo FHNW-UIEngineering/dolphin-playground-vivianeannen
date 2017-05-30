@@ -6,11 +6,15 @@ package myapp.presentationmodel.person;
  * todo: specify all commands you need in your corresponding controller
  */
 public interface PersonCommands {
-	String LOAD_SOME_PERSON = unique("loadSomePerson");
-	String SAVE             = unique("save");
-	String RESET            = unique("reset");
+	String SHOW_NEXT = unique("showNext");
+	String SHOW_LAST = unique("showLast");
+	String SAVE      = unique("save");
+	String RESET     = unique("reset");
 
-	static String unique(String key) {
+    String ON_PUSH = unique("onPush");
+    String ON_RELEASE = unique(("onRelease"));
+
+    static String unique(String key) {
 		return PersonCommands.class.getName() + "." + key;
 	}
 
