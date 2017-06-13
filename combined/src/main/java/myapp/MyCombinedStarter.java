@@ -5,7 +5,6 @@ import javafx.application.Application;
 import org.opendolphin.core.server.ServerDolphin;
 
 import myapp.controller.Reception;
-import myapp.service.impl.SomeRemoteService;
 import myapp.util.DefaultCombinedDolphinProvider;
 
 /**

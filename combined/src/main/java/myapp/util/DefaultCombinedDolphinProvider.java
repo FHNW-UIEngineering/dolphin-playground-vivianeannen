@@ -8,9 +8,7 @@ import org.opendolphin.core.client.comm.JavaFXUiThreadHandler;
 import org.opendolphin.core.server.DefaultServerDolphin;
 import org.opendolphin.core.server.ServerDolphinFactory;
 
-/**
- * @author Dieter Holz
- */
+
 public class DefaultCombinedDolphinProvider {
     private final ClientDolphin        clientDolphin;
     private final DefaultServerDolphin serverDolphin;

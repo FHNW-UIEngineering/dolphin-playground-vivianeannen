@@ -1,14 +1,20 @@
+/*
 package myapp.controller;
+
+import org.opendolphin.core.server.ServerPresentationModel;
 
 import myapp.presentationmodel.PMDescription;
 import myapp.presentationmodel.SpecialPMMixin;
 import myapp.presentationmodel.presentationstate.PresentationState;
 import myapp.util.Controller;
 import myapp.util.Language;
-import org.opendolphin.core.server.ServerPresentationModel;
 
+*/
+/**
+ * @author Dieter Holz
+ *//*
 
-public class PresentationStateController extends Controller implements SpecialPMMixin{
+public class PresentationStateController_Person extends Controller implements SpecialPMMixin{
 
     private PresentationState ps;
 
@@ -35,3 +41,4 @@ public class PresentationStateController extends Controller implements SpecialPM
 
 }
 
+*/

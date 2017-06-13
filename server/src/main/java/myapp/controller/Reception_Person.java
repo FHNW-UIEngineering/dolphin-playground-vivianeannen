@@ -1,22 +1,30 @@
+/*
 package myapp.controller;
 
-import myapp.service.SomeService;
 import org.opendolphin.core.server.action.DolphinServerAction;
 import org.opendolphin.core.server.comm.ActionRegistry;
 
+import myapp.service.SomeService;
 
-public class Reception extends DolphinServerAction {
+*/
+/**
+	At the reception all controllers check in.
+*//*
+
+
+public class Reception_Person extends DolphinServerAction {
     private SomeService myService;
 
-    public Reception(SomeService myService) {
+    public Reception_Person(SomeService myService) {
         this.myService = myService;
     }
 
     public void registerIn(ActionRegistry registry) {
         // todo register all your controllers here.
-        getServerDolphin().register(new CantonController(myService));
+        getServerDolphin().register(new PersonController(myService));
 
         //always needed
-        getServerDolphin().register(new PresentationStateController());
+        getServerDolphin().register(new PresentationStateController_Person());
     }
 }
+*/

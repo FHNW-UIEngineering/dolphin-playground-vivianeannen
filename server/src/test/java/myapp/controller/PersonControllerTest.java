@@ -45,7 +45,7 @@ public class PersonControllerTest {
 
         //when
         controller.initializeBasePMs();
-        Person p = controller.getPersonProxy();
+        Person p = controller.getCantonProxy();
 
         //then
         assertNotNull(p);
@@ -56,7 +56,7 @@ public class PersonControllerTest {
     public void testDirtyState(){
         //given
         controller.initializeBasePMs();
-        Person p = controller.getPersonProxy();
+        Person p = controller.getCantonProxy();
         String name = p.name.getValue();
 
         //when
@@ -71,7 +71,7 @@ public class PersonControllerTest {
     public void testLoadPerson(){
         //given
         controller.initializeBasePMs();
-        Person p = controller.getPersonProxy();
+        Person p = controller.getCantonProxy();
         p.name.setValue("bla");
 
         //when
@@ -84,7 +84,7 @@ public class PersonControllerTest {
         p.name.setValue("xyz");
 
         //then
-        assertEquals("xyz", pm.getAt(PersonAtt.NAME.name()).getValue());
+        assertEquals("xyz", pm.getAt(PersonAtt.CANTON.name()).getValue());
 
     }
 
@@ -92,7 +92,7 @@ public class PersonControllerTest {
     public void testSave(){
         //given
         controller.initializeBasePMs();
-        Person p = controller.getPersonProxy();
+        Person p = controller.getCantonProxy();
         controller.loadPerson();
 
         p.name.setValue("abc");

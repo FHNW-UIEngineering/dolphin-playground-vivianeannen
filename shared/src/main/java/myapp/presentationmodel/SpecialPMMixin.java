@@ -1,10 +1,10 @@
 package myapp.presentationmodel;
 
+import myapp.presentationmodel.canton.Canton;
 import org.opendolphin.core.BasePresentationModel;
 import org.opendolphin.core.Dolphin;
-import org.opendolphin.core.PresentationModel;
 
-import myapp.presentationmodel.person.Person;
+
 import myapp.presentationmodel.presentationstate.PresentationState;
 
 /**
@@ -14,8 +14,8 @@ public interface SpecialPMMixin {
     long   PRESENTATION_STATE_ID = -888L;
     String PRESENTATION_STATE_PM_ID = PMDescription.PRESENTATION_STATE.pmId(PRESENTATION_STATE_ID);
 
-    long   PERSON_PROXY_ID       = -777L;
-    String PERSON_PROXY_PM_ID    = PMDescription.PERSON.pmId(PERSON_PROXY_ID);
+    long   CANTON_PROXY_ID       = -777L;
+    String CANTON_PROXY_PM_ID    = PMDescription.CANTON.pmId(CANTON_PROXY_ID);
 
     default PresentationState getPresentationState() {
         return new PresentationState(getPresentationStatePM());
@@ -25,12 +25,12 @@ public interface SpecialPMMixin {
         return (BasePresentationModel) getDolphin().getAt(PRESENTATION_STATE_PM_ID);
     }
 
-    default Person getPersonProxy() {
-        return new Person(getPersonProxyPM());
+    default Canton getCantonProxy() {
+        return new Canton(getCantonProxyPM());
     }
 
-    default BasePresentationModel getPersonProxyPM() {
-        return (BasePresentationModel) getDolphin().getAt(PERSON_PROXY_PM_ID);
+    default BasePresentationModel getCantonProxyPM() {
+        return (BasePresentationModel) getDolphin().getAt(CANTON_PROXY_PM_ID);
     }
 
     Dolphin getDolphin();

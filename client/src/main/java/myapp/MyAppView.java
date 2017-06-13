@@ -9,7 +9,7 @@ import org.opendolphin.core.Dolphin;
 import org.opendolphin.core.client.ClientDolphin;
 
 import myapp.presentationmodel.SpecialPMMixin;
-import myapp.presentationmodel.person.PersonCommands;
+import myapp.presentationmodel.canton.CantonCommands;
 import myapp.util.BasicCommands;
 
 /**
@@ -25,7 +25,7 @@ public class MyAppView extends Application implements SpecialPMMixin {
              $ -> {
                  buildUI(stage);
                  clientDolphin.send(BasicCommands.INITIALIZE_CONTROLLER,
-                      $$ -> clientDolphin.send(PersonCommands.LOAD_SOME_PERSON));
+                      $$ -> clientDolphin.send(CantonCommands.LOAD_SOME_CANTON));
              });
     }
 

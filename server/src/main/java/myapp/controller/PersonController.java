@@ -1,3 +1,4 @@
+/*
 package myapp.controller;
 
 import java.util.Collections;
@@ -16,13 +17,15 @@ import myapp.presentationmodel.person.PersonCommands;
 import myapp.service.SomeService;
 import myapp.util.Controller;
 
+*/
 /**
  * This is an example for an application specific controller.
  * <p>
  * Controllers may have many actions that serve a common purpose.
  * <p>
  * Todo: Replace this with your Controller
- */
+ *//*
+
 class PersonController extends Controller implements SpecialPMMixin {
 
     private final SomeService service;
@@ -78,3 +81,4 @@ class PersonController extends Controller implements SpecialPMMixin {
         return getServerDolphin();
     }
 }
+*/

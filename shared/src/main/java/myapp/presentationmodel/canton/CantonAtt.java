@@ -1,16 +1,11 @@
-/*
-package myapp.presentationmodel.person;
+package myapp.presentationmodel.canton;
 
 import myapp.presentationmodel.PMDescription;
 import myapp.util.AttributeDescription;
 import myapp.util.ValueType;
 
-*/
-/**
- * @author Dieter Holz
- *//*
 
-public enum  PersonAtt implements AttributeDescription{
+public enum CantonAtt implements AttributeDescription{
     ID(ValueType.ID),
     CANTON(ValueType.STRING),
     AGE(ValueType.INT),
@@ -18,7 +13,7 @@ public enum  PersonAtt implements AttributeDescription{
 
     private final ValueType valueType;
 
-    PersonAtt(ValueType type) {
+    CantonAtt(ValueType type) {
         valueType = type;
     }
 
@@ -28,7 +23,6 @@ public enum  PersonAtt implements AttributeDescription{
 
     @Override
     public PMDescription getPMDescription() {
-        return PMDescription.PERSON;
+        return PMDescription.CANTON;
     }
 }
-*/

@@ -2,7 +2,7 @@ package myapp.presentationmodel;
 
 import java.util.Arrays;
 
-import myapp.presentationmodel.person.PersonAtt;
+import myapp.presentationmodel.canton.CantonAtt;
 import myapp.presentationmodel.presentationstate.PresentationStateAtt;
 import myapp.util.AttributeDescription;
 
@@ -11,7 +11,7 @@ import myapp.util.AttributeDescription;
  */
 public enum PMDescription {
     //todo: add all application specific PMDescriptions
-    PERSON("PersonPM", "PERSON", PersonAtt.values(), true),
+    CANTON("CantonPM", "CANTON", CantonAtt.values(), true),
 
     // PresentionState is always needed
     PRESENTATION_STATE("PresentationStatePM", null, PresentationStateAtt.values(), false);
